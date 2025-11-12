@@ -1,0 +1,28 @@
+{
+  "filmes": [
+    {
+      "id": "1",
+      "titulo": "O Poderoso Chefão",
+      "ano": 1972,
+      "genero": "Crime, Drama",
+      "nota": 9.2,
+      "imagemUrl": "https://placehold.co/400x600/333/FFF?text=O+Poderoso+Chefão"
+    },
+    {
+      "id": "2",
+      "titulo": "Batman: O Cavaleiro das Trevas",
+      "ano": 2008,
+      "genero": "Ação, Crime, Drama",
+      "nota": 9.0,
+      "imagemUrl": "https://placehold.co/400x600/333/FFF?text=O+Cavaleiro+das+Trevas"
+    },
+    {
+      "id": "3",
+      "titulo": "A Origem",
+      "ano": 2010,
+      "genero": "Ação, Aventura, Sci-Fi",
+      "nota": 8.8,
+      "imagemUrl": "https://placehold.co/400x600/333/FFF?text=A+Origem"
+    }
+  ]
+}

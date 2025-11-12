@@ -1,0 +1,14 @@
+
+body {
+    background-color: #1a202c; 
+    font-family: 'Inter', sans-serif;
+    color: #f8f9fa; 
+}
+
+#root {
+    min-height: 100vh;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
