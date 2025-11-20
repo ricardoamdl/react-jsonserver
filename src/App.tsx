@@ -1,5 +1,6 @@
 import {Container} from 'react-bootstrap';
 import Header from './componentes/Header';
+import List from './pages/List';
 
 function app() {
 
@@ -7,10 +8,8 @@ function app() {
     <>
     <Header/>
 
-    <Container>
-
-    <h1>Conteúdo principal</h1>
-    <p>Em breve, nossa lista de filmes aparecerá aqui!</p>
+    <Container className ="py-4">
+      <List/>
     </Container>
     </>
   );
