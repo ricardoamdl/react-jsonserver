@@ -1,73 +1,81 @@
 import { useState, useEffect } from 'react';
-import { Row, Col, Alert, Spinner } from 'react-bootstrap';
+import { Row, Col, Alert, Spinner, Button, Modal } from 'react-bootstrap';
 
-// Nossas importações
-import { getFilmes } from '../services/api';
-import { Filme } from '../types/Filme';
-import FilmeCard from '../components/Card';
+import { getFilmes, createFilme } from '../services/Api';
+import type { Filme } from '../types/Filme';
+import FilmeCard from '../componentes/Card';
+import FilmeForm from '../componentes/form';
 
 function List() {
-  // Estado para guardar a lista de filmes
   const [filmes, setFilmes] = useState<Filme[]>([]);
-  // Estado para saber se está carregando
   const [isLoading, setIsLoading] = useState(true);
-  // Estado para guardar qualquer erro
   const [error, setError] = useState<string | null>(null);
+  
+  // Estado para controlar se o Modal abre ou fecha
+  const [showModal, setShowModal] = useState(false);
 
-  // useEffect para buscar os dados QUANDO o componente for montado
+  // Busca os dados na API
+  const fetchDados = async () => {
+    setIsLoading(true);
+    const dados = await getFilmes();
+    if (dados) setFilmes(dados);
+    else setError('Erro ao carregar dados.');
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    // Função async auto-executável
-    (async () => {
-      setIsLoading(true); // Começa a carregar
-      setError(null); // Limpa erros anteriores
+    fetchDados();
+  }, []);
 
-      const dados = await getFilmes();
-
-      if (dados) {
-        setFilmes(dados); // Sucesso! Guarda os dados
-      } else {
-        // Se 'dados' for 'null', significa que deu erro
-        setError('Não foi possível carregar a lista. Tente novamente mais tarde.');
+  // Função que salva o filme novo
+  const handleCadastro = async (novoFilme: Omit<Filme, 'id'>) => {
+    try {
+      const criado = await createFilme(novoFilme);
+      if (criado) {
+        setShowModal(false); // Fecha modal
+        await fetchDados(); // Atualiza lista
       }
-      
-      setIsLoading(false); // Termina de carregar
-    })(); // A '()' no final executa a função
-  }, []); // O array vazio '[]' significa "execute apenas uma vez"
+    } catch (err) {
+      console.error(err);
+      alert('Erro ao criar filme');
+    }
+  };
 
-  // ----- RENDERIZAÇÃO CONDICIONAL -----
-
-  // 1. Se estiver carregando, mostre um Spinner
-  if (isLoading) {
-    return (
-      <div className="text-center mt-5">
-        <Spinner animation="border" role="status" variant="primary">
-          <span className="visually-hidden">Carregando...</span>
-        </Spinner>
-      </div>
-    );
-  }
-
-  // 2. Se der erro, mostre um Alerta
-  if (error) {
-    return (
-      <Alert variant="danger" className="mt-4">
-        {error}
-      </Alert>
-    );
-  }
-
-  // 3. Se tudo deu certo, mostre a lista
   return (
     <div>
-      <h1 className="mb-4">Meu Catálogo</h1>
-      <Row xs={1} md={2} lg={3} className="g-4">
-        {filmes.map((filme) => (
-          // A 'key' é essencial para o React saber qual item é qual
-          <Col key={filme.id}>
-            <FilmeCard filme={filme} />
-          </Col>
-        ))}
-      </Row>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h1>Meu Catálogo</h1>
+        <Button variant="primary" onClick={() => setShowModal(true)}>
+          + Novo Filme
+        </Button>
+      </div>
+
+      {isLoading && <Spinner animation="border" />}
+      
+      {!isLoading && error && <Alert variant="danger">{error}</Alert>}
+
+      {!isLoading && !error && (
+        <Row xs={1} md={2} lg={3} className="g-4">
+          {filmes.map((filme) => (
+            <Col key={filme.id}>
+              <FilmeCard filme={filme} />
+            </Col>
+          ))}
+        </Row>
+      )}
+
+      {/* O MODAL FICA AQUI */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Adicionar Novo Item</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <FilmeForm 
+            onCancel={() => setShowModal(false)} 
+            onSubmit={handleCadastro} 
+          />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
