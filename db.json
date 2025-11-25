@@ -1,31 +1,40 @@
 {
   "filmes": [
     {
-      "id": "1",
-      "titulo": "O Poderoso Chefão",
-      "ano": 1972,
-      "genero": "Crime, Drama",
-      "nota": 9.2,
+      "titulo": "Vingadores Guerra infinita",
+      "ano": 2018,
+      "genero": "fantasia, ficção científica",
+      "nota": 10,
       "tipo": "filme",
-      "imagemUrl": "https://placehold.co/400x600/333/FFF?text=O+Poderoso+Chefão"
+      "imagemUrl": "https://m.media-amazon.com/images/S/pv-target-images/18f61b04e1996a29f3444208a8dc95e24dd2adb48d82fed904eda1c0e55019ed.jpg",
+      "id": "1"
     },
     {
-      "id": "2",
-      "titulo": "Batman: O Cavaleiro das Trevas",
-      "ano": 2008,
-      "genero": "Ação, Crime, Drama",
-      "nota": 9.0,
+      "titulo": "Homem-Aranha: Sem Volta para Casa",
+      "ano": 2021,
+      "genero": "Ação/Fantasia",
+      "nota": 10,
       "tipo": "filme",
-      "imagemUrl": "https://placehold.co/400x600/333/FFF?text=O+Cavaleiro+das+Trevas"
+      "imagemUrl": "https://manualdosgames.com/wp-content/uploads/2022/06/Blu-ray-de-Homem-Aranha-Sem-Volta-Para-Casa.jpg",
+      "id": "3"
     },
     {
-      "id": "3",
-      "titulo": "A Origem",
-      "ano": 2010,
-      "genero": "Ação, Aventura, Sci-Fi",
-      "nota": 8.8,
-      "tipo": "filme",
-      "imagemUrl": "https://placehold.co/400x600/333/FFF?text=A+Origem"
+      "titulo": "Brooklyn Nine-Nine",
+      "ano": 2013,
+      "genero": "sitcom",
+      "nota": 10,
+      "tipo": "serie",
+      "imagemUrl": "https://play-images-prod-ctf.tech.tvnz.co.nz/api/v1/web/image/7drcAubh3nX9epHcDcCVeD/b986f4aef363f8027f1dfcc0246bee2d/Brooklyn_Nine-Nine_showtile_v2.png.b986f4aef363f8027f1dfcc0246bee2d.jpg",
+      "id": "14b6"
+    },
+    {
+      "id": "3f3c",
+      "titulo": "Lucifer",
+      "ano": 2016,
+      "genero": "Drama",
+      "nota": 10,
+      "tipo": "serie",
+      "imagemUrl": "https://m.media-amazon.com/images/S/pv-target-images/2f205db645d3c0516361bd028dde1435557d2641070e5a23155d48db4579a970.jpg"
     }
   ]
 }

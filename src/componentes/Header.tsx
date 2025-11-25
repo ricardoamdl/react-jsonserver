@@ -5,7 +5,7 @@ function Header() {
         <Navbar  bg="dark" variant="dark" expand="lg" className="mb-4">
         <Container>
             <Navbar.Brand href="#home">
-                Meu Catalogo de Filmese Séries
+                Meu Catalogo de Filmes e Séries
             </Navbar.Brand>
             </Container>
         </Navbar>
