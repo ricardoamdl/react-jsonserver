@@ -6,6 +6,7 @@
       "ano": 1972,
       "genero": "Crime, Drama",
       "nota": 9.2,
+      "tipo": "filme",
       "imagemUrl": "https://placehold.co/400x600/333/FFF?text=O+Poderoso+Chefão"
     },
     {
@@ -14,6 +15,7 @@
       "ano": 2008,
       "genero": "Ação, Crime, Drama",
       "nota": 9.0,
+      "tipo": "filme",
       "imagemUrl": "https://placehold.co/400x600/333/FFF?text=O+Cavaleiro+das+Trevas"
     },
     {
@@ -22,6 +24,7 @@
       "ano": 2010,
       "genero": "Ação, Aventura, Sci-Fi",
       "nota": 8.8,
+      "tipo": "filme",
       "imagemUrl": "https://placehold.co/400x600/333/FFF?text=A+Origem"
     }
   ]

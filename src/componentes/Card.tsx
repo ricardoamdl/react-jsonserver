@@ -1,20 +1,27 @@
 import { Card, Badge, Button } from 'react-bootstrap';
-import type { Filme } from '../types/Filme'; //Importando nosso tipo
+import type { Filme } from '../types/Filme';
 
-// O 'Props' define o que este componente espera receber
 interface FilmeCardProps {
   filme: Filme;
+  onEdit: (filme: Filme) => void;
+  onDelete: (id: string) => void;
 }
 
-// Usamos 'FilmeCardProps' para tipar as props
-function FilmeCard({ filme }: FilmeCardProps) {
-  
-  // Lógica para definir a cor do Badge (etiqueta)
+function FilmeCard({ filme, onEdit, onDelete }: FilmeCardProps) {
   const badgeVariant = filme.tipo === 'filme' ? 'primary' : 'success';
 
   return (
-    // Usamos o Card do react-bootstrap
     <Card className="h-100 shadow-sm">
+      {/* NOVO: Adicionar imagem */}
+      {filme.imagemUrl && (
+        <Card.Img 
+          variant="top" 
+          src={filme.imagemUrl} 
+          alt={filme.titulo}
+          style={{ height: '300px', objectFit: 'cover' }}
+        />
+      )}
+      
       <Card.Body className="d-flex flex-column">
         <Card.Title>{filme.titulo}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
@@ -26,10 +33,23 @@ function FilmeCard({ filme }: FilmeCardProps) {
           <span className="fw-bold">Nota: {filme.nota}/10</span>
         </div>
 
-        {/* Botões que usaremos no futuro */}
         <div className="mt-auto d-flex justify-content-end gap-2">
-          <Button variant="outline-secondary" size="sm">Editar</Button>
-          <Button variant="outline-danger" size="sm">Excluir</Button>
+          <Button 
+            variant="outline-secondary" 
+            size="sm"
+            onClick={() => onEdit(filme)}
+          >
+            Editar
+          </Button>
+          <Button 
+            variant="outline-danger" 
+            size="sm"
+            onClick={() => {
+              if (filme.id) onDelete(filme.id);
+            }}
+          >
+            Excluir
+          </Button>
         </div>
       </Card.Body>
     </Card>
